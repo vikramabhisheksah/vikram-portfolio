@@ -3,7 +3,9 @@ import './Header.scss';
 
 import {AppWrap} from '../../wrapper'
 import {easeInOut, motion} from 'framer-motion';
-import { images } from '../../constants';
+import { images,resume } from '../../constants';
+import { HiDocumentDownload } from "react-icons/hi";
+
 
 const scaleVariants = {
   whileInView: {
@@ -14,6 +16,13 @@ const scaleVariants = {
       ease: easeInOut
     }
   }
+}
+
+const handleDownload =()=>{
+  const link = document.createElement('a');
+  link.href = resume;
+  link.download = 'vikram_resume.pdf';
+  link.click();
 }
 const Header = () => {
   return (
@@ -31,9 +40,13 @@ const Header = () => {
             </div>
           </div>
           <div className='tag-cmp app__flex'>
-            <p className='p-text'>Full Stack developer</p>
+            <p className='p-text'>Full Stack Engineer</p>
             <p className='p-text'>Entrepreneur</p>
             <p className='p-text'>Fitness Enthusiast</p>
+          </div>
+          <div className='resume-cmp app__flex' onClick={handleDownload}>
+            <HiDocumentDownload />
+            <h3>My Resume</h3>
           </div>
         </div>
       </motion.div>
